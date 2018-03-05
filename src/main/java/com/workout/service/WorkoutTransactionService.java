@@ -1,9 +1,11 @@
 package com.workout.service;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.workout.entity.Workout;
@@ -27,6 +29,12 @@ public class WorkoutTransactionService {
 		workoutTransaction.setCalsBurnt(calculateCalsBurnt(duration, workout));
 
 		return workoutTransactionRepository.save(workoutTransaction).getWorkoutId();
+	}
+	
+	@Cacheable(value="WorkoutTransaction")
+	public List<WorkoutTransaction> getAllTransactions(){
+		List<WorkoutTransaction> allTransactions = workoutTransactionRepository.findAll();
+		return allTransactions;
 	}
 
 	private double calculateCalsBurnt(long duration, Workout workout) {

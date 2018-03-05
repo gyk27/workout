@@ -12,8 +12,7 @@ import com.workout.repository.WorkoutRepository;
 public class WorkoutService {
 	@Autowired
 	WorkoutRepository  workoutRepository;
-	public List getWorkouts(long userId) {
-		
+	public List getWorkouts(long userId) {		
 		return workoutRepository.getWorkouts(userId);
 	}
 

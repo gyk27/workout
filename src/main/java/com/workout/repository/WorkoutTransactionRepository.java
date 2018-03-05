@@ -15,6 +15,6 @@ import com.workout.entity.WorkoutTransaction;
 
 @Transactional
 public interface WorkoutTransactionRepository extends JpaRepository<WorkoutTransaction,Long> {
-	
+	List<WorkoutTransaction> findAll();
 }
 

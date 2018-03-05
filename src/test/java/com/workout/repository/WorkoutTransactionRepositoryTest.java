@@ -45,5 +45,20 @@ public class WorkoutTransactionRepositoryTest {
 
 		
 	}
+	
+	@Test
+	public void testAllTransactions(){
+        try {     		
+    		List<WorkoutTransaction> transactions=workoutTransactionRepository.findAll();
+    		System.out.println("No of transactions are "+transactions.size());
+    		assertNotEquals(transactions.size(), 0);			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Error happened");
+			e.printStackTrace();
+		}
+
+		
+	}
 
 }
